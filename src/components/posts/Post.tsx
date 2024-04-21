@@ -6,9 +6,6 @@ import {
   Send,
   Smile,
 } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button";
@@ -64,11 +61,11 @@ const Post = ({
     );
 
     return () => {};
-  }, [db, id]);
+  }, [user?.uid, id]);
 
   useEffect(() => {
     setHasLiked(likes.findIndex((like) => like.id == user?.uid) !== -1);
-  }, [likes]);
+  }, [user?.uid, likes, id]);
 
   useEffect(() => {
     onSnapshot(collection(db, "posts", id, "likes"), (snapShot) => {
@@ -76,7 +73,7 @@ const Post = ({
     });
 
     return () => {};
-  }, [db, id]);
+  }, [user?.uid, id]);
 
   const handlePostLike = async () => {
     hasLiked

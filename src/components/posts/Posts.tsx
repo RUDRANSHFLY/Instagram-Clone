@@ -8,7 +8,6 @@ import {
   query,
 } from "firebase/firestore";
 import db from "@/firebase/FireBase";
-import { error } from "console";
 
 interface PostProps {
   id: string;
